@@ -1,0 +1,25 @@
+{
+  "name": "codish-blog",
+  "version": "1.0.0",
+  "description": "- A codish tech space for articles, blog post, thoughts and opinion",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmarvann/codish-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmarvann/codish-blog/issues"
+  },
+  "homepage": "https://github.com/cmarvann/codish-blog#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.3"
+  }
+}
