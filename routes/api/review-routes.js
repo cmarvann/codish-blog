@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Review } = require('../../models');
+const sequelize = require('../../config/connection');
+const { User, Review, Like } = require('../../models');
 
 
 router.get('/', (req, res) => {
@@ -63,6 +64,42 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
+
+// Uplike
+router.put('/:id, uplike', (req, res) => {
+Like.create({
+  user_id: req.body.user_id,
+  review_id: req.body.review_id
+
+}).then(() => {
+  // then find the post we just voted on
+  return Review.findOne({
+    where: {
+      id: req.body.review_id
+    },
+    attributes: [
+      'id',
+      'review_url',
+      'title',
+      'created_at',
+      [
+        sequelize.literal('(SELECT COUNT(*) FROM like WHERE review.id = like.review_id)'),
+        'like_count'
+      ]
+    ]
+  })
+
+  .then(dbReviewData => res.json(dbReviewData))
+  .catch(err => res.json(err));
+
+  });
+});
+
+
+
+
 
 
 router.put('/:id', (req, res) => {
