@@ -1,6 +1,8 @@
 const User = require('./User');
 const Review = require('./Review');
 const Like = require('./like');
+const Comment = require('./comment');
+
 
 
 // User to Review
@@ -44,7 +46,23 @@ User.hasMany(Review, {
   });
 
 
+  Comment.belongsTo(User, {
+    foreignKey: 'user_id'
+  });
+  
+  Comment.belongsTo(Review, {
+    foreignKey: 'review_id'
+  });
+  
+  User.hasMany(Comment, {
+    foreignKey: 'user_id'
+  });
+  
+  Review.hasMany(Comment, {
+    foreignKey: 'Review_id'
+  });
+  
 
 
 
-module.exports = { User, Review, Like };
+module.exports = { User, Review, Like, Comment };

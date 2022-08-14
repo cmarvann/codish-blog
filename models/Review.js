@@ -1,9 +1,32 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Review extends Model {}
+class Review extends Model {
+  static uplike(body, models) {
+    return models.Like.create({
+      user_id: body.user_id,
+      review_id: body.review_id
+    }).then(() => {
+      return Review.findOne({
+        where: {
+          id: body.review_id
+        },
+        attributes: [
+          'id',
+          'review_url',
+          'title',
+          'created_at',
+          [
+            sequelize.literal('(SELECT COUNT(*) FROM like WHERE review.id = like.post_id)'),
+            'like_count'
+          ]
+        ]
+      });
+    });
+  }
+}
 
-// create fields/columns for Post model
+// review 
 Review.init(
   {
     id: {
