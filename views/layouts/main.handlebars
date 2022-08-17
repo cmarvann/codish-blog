@@ -11,13 +11,20 @@
 
 <body>
   <header>
-    <h1>Welcome to the New Jersey Cheery Blossom Season</h1>
+    <h1>Welcome to the New Jersey Cherry Blossom Season</h1>
   </header>
   <nav>
-    <a href="/">Home</a>
+    ood</a>
+    
     {{#if loggedIn}}
+<a href="/dashboard">Home</a>
+    <a href="/cherry">Cherry</a>
+    <a href="/site">Site</a>
+
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
+
+
     <a href="/login">Login</a>
     {{/if}}
   </nav>
@@ -25,7 +32,7 @@
     <aside>
       <h2>Enjoy the New Jersey top Cherry Blossom Parks!</h2>
     </aside>
-    <div class="park">
+    <div class="site">
       {{{body}}}
     </div>
   </main>

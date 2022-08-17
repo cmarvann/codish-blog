@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     const SiteData = await Site.findAll({
       include: [
         {
-          model: Site,
+          model: Cherry,
           attributes: ['displayname', 'description'],
         },
       ],
@@ -60,7 +60,7 @@ router.get('/cherry/:id', withAuth, async (req, res) => {
   try {
     const dbCherryData = await Cherry.findByPk(req.params.id);
 
-    const cherry = dbCherryata.get({ plain: true });
+    const cherry = dbCherryData.get({ plain: true });
 
     res.render('cherry', { cherry, loggedIn: req.session.loggedIn });
   } catch (err) {

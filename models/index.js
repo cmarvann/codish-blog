@@ -1,8 +1,8 @@
 const User = require('./User');
-const Like = require('./like');
-const Comment = require('./comment');
 const Cherry = require('./cherry');
 const Site = require('./site');
+const Like = require('./like');
+const Comment = require('./comment');
 
 
 //Cherry
